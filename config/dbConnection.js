@@ -12,7 +12,7 @@ const mongoClient = new MongoClient(CONNECTION_STRING);
 const client = (async () => {
   await mongoClient.connect();
   console.log("Successfully connected");
-  return mongoClient.db("discover");
+  return mongoClient.db("test");
 })();
 
 module.exports = { client };

@@ -13,7 +13,7 @@ const getAllSite = async function (search) {
   return await db
     .collection(collectionName)
     .find(
-      search !== ""
+      search
         ? {
             $or: siteSearchFields.map((field) => ({
               [field]: { $regex: `${search}`, $options: "i" },
