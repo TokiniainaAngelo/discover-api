@@ -12,6 +12,7 @@ const commentRouter = require("./comments/commentRoutes");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('public'))
 
 app.use("/api-status", (req, res) => res.json({ status: "API is OK import" }));
 app.use("/users", usersRouter);
