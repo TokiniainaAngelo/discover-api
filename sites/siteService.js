@@ -1,7 +1,7 @@
 const client = require("../config/dbConnection").client;
 const collectionName = "sites";
 const ObjectId = require("mongodb").ObjectId;
-const siteSearchFields = ["label"];
+const siteSearchFields = ["name", "description", "region", "localisation"];
 
 const addSite = async function (site) {
   const db = await client;
@@ -10,6 +10,7 @@ const addSite = async function (site) {
 
 const getAllSite = async function (search) {
   const db = await client;
+
   return await db
     .collection(collectionName)
     .find(
