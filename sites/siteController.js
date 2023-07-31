@@ -14,7 +14,7 @@ const getAllSites = async function (req, res, next) {
   try {
     const sites = await siteService.getAllSite(search);
     //res.json({ data: sites, message: "Ressources found" });
-    res.json(sites)
+    res.json(sites);
   } catch (err) {
     res.json({ error: err.message });
   }
@@ -23,9 +23,9 @@ const getAllSites = async function (req, res, next) {
 const getSiteById = async function (req, res, next) {
   try {
     const site = await siteService.getSiteById(req.params.id);
-    res.json({ data: site, message: "Ressource found" });
+    res.json(site);
   } catch (err) {
-    res.json({ error: err.message });
+    res.json(err.message);
   }
 };
 
