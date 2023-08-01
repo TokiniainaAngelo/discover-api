@@ -16,7 +16,7 @@ app.use(express.static('public'))
 
 app.use("/api-status", (req, res) => res.json({ status: "API is OK import" }));
 app.use("/users", usersRouter);
-app.use("/sites", siteRouter);
+app.use("/sites", authorize, siteRouter);
 app.use("/setting", authorize, settingRouter);
 app.use("/comment", authorize, commentRouter);
 

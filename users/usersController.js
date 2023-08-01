@@ -1,12 +1,14 @@
 const usersService = require("./usersService");
-//const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const addUser = async function (req, res, next) {
   try {
     const { _id, ...user } = req.body;
     await usersService.addUser(user);
     //res.json({ data: user, message: "Ressource created" });
-    res.json(user)
+    let jwtToken = jwt.sign({ email: user.email, fullname: user.fullname }, "jwt-secret-key", { expiresIn: "50d" });
+    res.json({ token: jwtToken, userId: user._id });
+    //res.json(user)
   } catch (err) {
     //res.json({ error: err.message });
     res.json(error.message);
@@ -39,10 +41,9 @@ const getUserByLoginAndPassword = async function (req, res, next) {
   try {
     const user = await usersService.getUserByLoginAndPassword(req.body);
     if (user) {
-      //let jwtToken = jwt.sign({ email: user.email, userId: user._id }, "jwt-secret-key", { expiresIn: "1h" });
-
-      //res.json({ data: { token: jwtToken, _id: user._id, role: user.role }, message: "Ressource found" });
-      res.json(user);
+      let jwtToken = jwt.sign({ email: user.email, fullname: user.fullname }, "jwt-secret-key", { expiresIn: "50d" });
+      res.json({ token: jwtToken, userId: user._id });
+      //res.json(user);
     } else {
       //res.json({ data: user, message: "Invalid login/password" });
       res.json(null);
