@@ -1,19 +1,38 @@
 const commentService = require("./commentService");
 
-const addComment = async function (req, res, next) {
+/*const addComment = async function (req, res, next) {
   try {
     const comment = await commentService.addComment(req.body);
     res.json({ data: comment.value, message: "Ressource created" });
   } catch (err) {
     res.json({ error: err.message });
   }
+};*/
+
+const addComment = async function (req, res, next) {
+  try {
+    const comment = await commentService.addComment(req.params.id, req.body);
+    res.json(comment);
+  } catch (err) {
+    res.json({ error: err.message });
+  }
 };
 
+/*
 const getAllComments = async function (req, res, next) {
   const { search } = req.query;
   try {
     const comments = await commentService.getAllComment(search);
     res.json({ data: comments, message: "Ressources found" });
+  } catch (err) {
+    res.json({ error: err.message });
+  }
+};*/
+
+const getAllComments = async function (req, res, next) {
+  try {
+    const comments = await commentService.getAllComment(req.params.id);
+    res.json(comments);
   } catch (err) {
     res.json({ error: err.message });
   }

@@ -24,8 +24,8 @@ app.use("/api-status", (req, res) => res.json({ status: "API is OK import" }));
 app.use("/users", usersRouter);
 app.use("/sites", authorize, siteRouter);
 app.use("/setting", authorize, settingRouter);
-app.use("/comment", authorize, commentRouter);
 app.use("/notifications", authorize, notificationRouter);
+app.use("/comment", authorize, commentRouter);
 
 const port = process.env.PORT || 8000;
 
