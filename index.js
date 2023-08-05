@@ -38,6 +38,15 @@ io.on("connection", function (socket) {
   });
 });
 
+io.on("from android", function () {
+  console.log("android connected");
+});
+
+setInterval(() => {
+  console.log("emitting message");
+  io.emit("messager");
+}, 5000);
+
 server.listen(port, function () {
   console.log("Server is running on port " + port);
 });
