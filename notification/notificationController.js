@@ -13,9 +13,9 @@ const getAllNotifications = async function (req, res, next) {
   const { search } = req.query;
   try {
     const notifications = await notificationService.getAllNotification(search);
-    res.json({ data: notifications, message: "Ressources found" });
+    res.json(notifications);
   } catch (err) {
-    res.json({ error: err.message });
+    res.json(err.message);
   }
 };
 

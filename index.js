@@ -10,6 +10,7 @@ const usersRouter = require("./users/usersRoute");
 const siteRouter = require("./sites/siteRoutes");
 const settingRouter = require("./setting/settingRoutes");
 const commentRouter = require("./comments/commentRoutes");
+const notificationRouter = require("./notification/notificationRoutes");
 
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -24,6 +25,7 @@ app.use("/users", usersRouter);
 app.use("/sites", authorize, siteRouter);
 app.use("/setting", authorize, settingRouter);
 app.use("/comment", authorize, commentRouter);
+app.use("/notifications", authorize, notificationRouter);
 
 const port = process.env.PORT || 8000;
 

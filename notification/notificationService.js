@@ -10,18 +10,9 @@ const addNotification = async function (notification) {
 
 const getAllNotification = async function (search) {
   const db = await client;
-  return await db
-    .collection(collectionName)
-    .find(
-      search !== ""
-        ? {
-            $or: notificationSearchFields.map((field) => ({
-              [field]: { $regex: `${search}`, $options: "i" },
-            })),
-          }
-        : {}
-    )
-    .toArray();
+  const notifications = await db.collection(collectionName).find({}).toArray();
+
+  return notifications;
 };
 
 const getNotificationById = async function (id) {
