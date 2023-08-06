@@ -15,7 +15,7 @@ const addUser = async function (req, res, next) {
 const getAllUsers = async function (req, res, next) {
   try {
     const users = await usersService.getAllUsers();
-    res.json(users)
+    res.json(users);
   } catch (err) {
     res.json(error.message);
   }
@@ -24,7 +24,7 @@ const getAllUsers = async function (req, res, next) {
 const getUserById = async function (req, res, next) {
   try {
     const user = await usersService.getUserById(req.params.id);
-    res.json(user)
+    res.json(user);
   } catch (err) {
     res.json(error.message);
   }
@@ -40,15 +40,14 @@ const getUserByLoginAndPassword = async function (req, res, next) {
       res.json(null);
     }
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
-  
 };
 
 const updateUser = async function (req, res, next) {
   try {
     const user = await usersService.updateUser(req.params.id, req.body);
-    res.json(user)
+    res.json(user);
   } catch (err) {
     res.json(error.message);
   }
@@ -57,7 +56,7 @@ const updateUser = async function (req, res, next) {
 const deleteUser = async function (req, res, next) {
   try {
     const user = await usersService.deleteUser(req.params.id);
-    res.json(user)
+    res.json(user);
   } catch (err) {
     res.json(error.message);
   }
