@@ -10,8 +10,9 @@ const commentService = require("./commentService");
 };*/
 
 const addComment = async function (req, res, next) {
+  const socket = req.app.get("socketio");
   try {
-    const comment = await commentService.addComment(req.params.id, req.body);
+    const comment = await commentService.addComment(req.params.id, req.body, socket);
     res.json(comment);
   } catch (err) {
     res.json({ error: err.message });

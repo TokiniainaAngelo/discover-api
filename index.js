@@ -27,6 +27,8 @@ app.use("/setting", authorize, settingRouter);
 app.use("/notifications", authorize, notificationRouter);
 app.use("/comment", authorize, commentRouter);
 
+app.set("socketio", io);
+
 const port = process.env.PORT || 8000;
 
 io.on("connection", function (socket) {
@@ -40,15 +42,8 @@ io.on("connection", function (socket) {
   });
 });
 
-io.on("from android", function () {
-  console.log("android connected");
-});
-
-setInterval(() => {
-  console.log("emitting message");
-  io.emit("messager");
-}, 5000);
-
 server.listen(port, function () {
   console.log("Server is running on port " + port);
 });
+
+module.exports = { server, io };

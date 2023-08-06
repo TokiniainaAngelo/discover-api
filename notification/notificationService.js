@@ -3,9 +3,14 @@ const collectionName = "notifications";
 const ObjectId = require("mongodb").ObjectId;
 const notificationSearchFields = ["label"];
 
-const addNotification = async function (notification) {
-  const db = await client;
-  return await db.collection(collectionName).insertOne(notification);
+const addNotification = async function (notification, socket) {
+  try {
+    const db = await client;
+    socket.emit("notification");
+    return await db.collection(collectionName).insertOne(notification);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const getAllNotification = async function (search) {
