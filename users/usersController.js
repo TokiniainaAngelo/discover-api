@@ -8,7 +8,7 @@ const addUser = async function (req, res, next) {
     let jwtToken = jwt.sign({ email: user.email, fullname: user.fullname }, "jwt-secret-key", { expiresIn: "50d" });
     res.json({ token: jwtToken, userId: user._id });
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
 };
 
@@ -17,7 +17,7 @@ const getAllUsers = async function (req, res, next) {
     const users = await usersService.getAllUsers();
     res.json(users);
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
 };
 
@@ -26,7 +26,7 @@ const getUserById = async function (req, res, next) {
     const user = await usersService.getUserById(req.params.id);
     res.json(user);
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
 };
 
@@ -49,7 +49,7 @@ const updateUser = async function (req, res, next) {
     const user = await usersService.updateUser(req.params.id, req.body);
     res.json(user);
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
 };
 
@@ -58,7 +58,7 @@ const deleteUser = async function (req, res, next) {
     const user = await usersService.deleteUser(req.params.id);
     res.json(user);
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
 };
 
