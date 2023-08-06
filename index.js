@@ -18,7 +18,7 @@ const io = socketIo(server);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static("public"), { maxAge: 31536000000 });
+app.use(express.static("public"));
 
 app.use("/api-status", (req, res) => res.json({ status: "API is OK import" }));
 app.use("/users", usersRouter);
