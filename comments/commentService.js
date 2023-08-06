@@ -36,23 +36,6 @@ const getAllComment = async function (id) {
     .toArray();
 };
 
-/*
-const getAllComment = async function (search) {
-  const db = await client;
-  return await db
-    .collection(collectionName)
-    .find(
-      search !== ""
-        ? {
-            $or: commentSearchFields.map((field) => ({
-              [field]: { $regex: `${search}`, $options: "i" },
-            })),
-          }
-        : {}
-    )
-    .toArray();
-};*/
-
 const getCommentById = async function (id) {
   const objId = new ObjectId(id);
   const db = await client;

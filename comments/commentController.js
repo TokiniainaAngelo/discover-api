@@ -1,14 +1,5 @@
 const commentService = require("./commentService");
 
-/*const addComment = async function (req, res, next) {
-  try {
-    const comment = await commentService.addComment(req.body);
-    res.json({ data: comment.value, message: "Ressource created" });
-  } catch (err) {
-    res.json({ error: err.message });
-  }
-};*/
-
 const addComment = async function (req, res, next) {
   const socket = req.app.get("socketio");
   try {
@@ -18,17 +9,6 @@ const addComment = async function (req, res, next) {
     res.json({ error: err.message });
   }
 };
-
-/*
-const getAllComments = async function (req, res, next) {
-  const { search } = req.query;
-  try {
-    const comments = await commentService.getAllComment(search);
-    res.json({ data: comments, message: "Ressources found" });
-  } catch (err) {
-    res.json({ error: err.message });
-  }
-};*/
 
 const getAllComments = async function (req, res, next) {
   try {

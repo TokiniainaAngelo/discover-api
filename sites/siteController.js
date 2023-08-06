@@ -13,7 +13,6 @@ const getAllSites = async function (req, res, next) {
   const { search } = req.query;
   try {
     const sites = await siteService.getAllSite(search);
-    //res.json({ data: sites, message: "Ressources found" });
     res.json(sites);
   } catch (err) {
     res.json({ error: err.message });

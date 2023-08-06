@@ -30,7 +30,8 @@ const updateUser = async function (id, user) {
   const objId = new ObjectId(id);
   const { _id, ..._user } = user;
   const db = await client;
-  return await db.collection(collectionName).findOneAndUpdate({ _id: objId }, { $set: _user }, { upsert: true });
+  await db.collection(collectionName).findOneAndUpdate({ _id: objId }, { $set: _user }, { upsert: true });
+  return await db.collection(collectionName).findOne({ _id: objId });
 };
 
 const deleteUser = async function (id) {
