@@ -8,7 +8,7 @@ const addUser = async function (req, res, next) {
     let jwtToken = jwt.sign({ email: user.email, fullname: user.fullname }, "jwt-secret-key", { expiresIn: "50d" });
     res.json({ token: jwtToken, userId: user._id });
   } catch (err) {
-    res.json(err.message);
+    res.json(err);
   }
 };
 
@@ -17,7 +17,7 @@ const getAllUsers = async function (req, res, next) {
     const users = await usersService.getAllUsers();
     res.json(users);
   } catch (err) {
-    res.json(err.message);
+    res.json(err);
   }
 };
 
@@ -26,7 +26,7 @@ const getUserById = async function (req, res, next) {
     const user = await usersService.getUserById(req.params.id);
     res.json(user);
   } catch (err) {
-    res.json(err.message);
+    res.json(err);
   }
 };
 
@@ -40,7 +40,7 @@ const getUserByLoginAndPassword = async function (req, res, next) {
       res.json(null);
     }
   } catch (err) {
-    res.json(err.message);
+    res.json(err);
   }
 };
 
